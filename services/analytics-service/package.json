@@ -9,6 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "module",
+  "type": "module",
   "dependencies": {
     "kafkajs": "^2.2.4"
   }
