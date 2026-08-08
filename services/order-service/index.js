@@ -1,7 +1,7 @@
 import { Kafka } from "kafkajs";
 
 const kafka = new Kafka({
-  clientId: "payment-service",
+  clientId: "order-service",
   brokers: ["localhost:9094"],
 });
 
@@ -24,6 +24,9 @@ const run = async () => {
 
         //we can create order
         const dummyOrderId = 567;
+
+        console.log(`Order has been created for ${userId} with order id : ${dummyOrderId}`);
+
         await producer.send({
           topic: "order-successful",
           messages: [
@@ -32,6 +35,8 @@ const run = async () => {
             },
           ],
         });
+
+        console.log(`Data sent to order-successful topic`);
       },
     });
   } catch (err) {
